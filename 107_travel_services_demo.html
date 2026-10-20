@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="kn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#155e75">
+<title>107 — ಪ್ರಯಾಣ ಮತ್ತು ಸ್ಥಳೀಯ ಸೇವೆಗಳು</title>
+<style>
+:root{--ink:#102a43;--muted:#526477;--brand:#155e75;--brand2:#0e7490;--bg:#f3f7fa;--card:#fff;--line:#d9e4ec;--soft:#e6f4f7}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans Kannada",sans-serif}
+header{background:linear-gradient(135deg,#155e75,#0e7490);color:white;padding:22px 18px 20px;border-radius:0 0 24px 24px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px}.logo{font-size:30px;font-weight:850;letter-spacing:1px}.lang{border:1px solid #ffffff88;background:#ffffff20;color:#fff;padding:8px 11px;border-radius:12px;font-weight:700}
+header h1{font-size:23px;line-height:1.25;margin:17px 0 7px}header p{margin:0;color:#e4f6fa;font-size:14px}
+main{max-width:680px;margin:0 auto;padding:16px}
+.notice{background:#fff7df;border:1px solid #f3d68b;color:#6f4d00;padding:12px 14px;border-radius:14px;font-size:13px;line-height:1.45;margin-bottom:15px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.mode{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:14px 12px;text-align:left;color:var(--ink);min-height:105px;cursor:pointer}
+.mode .emoji{font-size:27px;display:block;margin-bottom:6px}.mode strong{display:block;font-size:16px}.mode small{display:block;color:var(--muted);margin-top:4px;line-height:1.35}
+.mode.active{border:2px solid var(--brand2);background:var(--soft);padding:13px 11px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:17px;margin-top:15px}
+h2{font-size:19px;margin:0 0 14px}.field{margin:12px 0}.field label{display:block;font-weight:650;font-size:13px;margin-bottom:6px}
+input,select{width:100%;padding:12px;border:1px solid #c9d6e0;border-radius:11px;background:white;font:inherit;color:var(--ink);min-height:45px}
+button.primary{width:100%;padding:13px;border:0;border-radius:12px;background:var(--brand);color:#fff;font-weight:750;font-size:15px;margin-top:7px;cursor:pointer}
+button.secondary{padding:11px 13px;border:1px solid var(--line);border-radius:11px;background:white;color:var(--brand);font-weight:700;cursor:pointer}
+.help{color:var(--muted);font-size:12px;line-height:1.5;margin:10px 0 0}
+.result{display:none;border:1px solid #9bd3bd;background:#effbf4;padding:14px;border-radius:13px;margin-top:13px;line-height:1.5}
+.result strong{display:block;margin-bottom:5px}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+a.link{display:inline-block;text-decoration:none;background:var(--soft);color:var(--brand);padding:10px 12px;border-radius:10px;font-weight:700;font-size:13px}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:20px 10px}
+@media(min-width:560px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}.mode{min-height:120px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="top"><div class="logo">107</div><button class="lang" id="langBtn" type="button">English</button></div>
+ <h1 id="heroTitle">ಪ್ರಯಾಣ ಮತ್ತು ಸ್ಥಳೀಯ ಸೇವೆಗಳು — ಒಂದೇ ಆ್ಯಪ್‌ನಲ್ಲಿ</h1>
+ <p id="heroSub">ಬಸ್, ಟ್ರೈನ್, ಆಟೋ ಮತ್ತು ಟ್ಯಾಕ್ಸಿ ಆಯ್ಕೆಮಾಡಿ</p>
+</header>
+<main>
+ <div class="notice" id="notice">ಇದು ಮೊದಲ ಡೆಮೊ ಆವೃತ್ತಿ. ಆಟೋ/ಟ್ಯಾಕ್ಸಿ ಬುಕ್ಕಿಂಗ್ ಇಲ್ಲಿ ಮಾದರಿಯಾಗಿ ರಚನೆಯಾಗುತ್ತದೆ; ನಿಜವಾದ ಚಾಲಕರಿಗೆ ಇನ್ನೂ ಕಳುಹಿಸುವುದಿಲ್ಲ. ಬಸ್/ಟ್ರೈನ್ ಟಿಕೆಟ್ ಖರೀದಿಗೆ ಅಧಿಕೃತ ಸೇವೆ ಬಳಸಿ.</div>
+ <div class="grid" role="group" aria-label="Travel type">
+  <button class="mode active" data-mode="bus"><span class="emoji">🚌</span><strong data-kn="ಬಸ್" data-en="Bus">ಬಸ್</strong><small data-kn="ಬಸ್ ಪ್ರಯಾಣ ಹುಡುಕಿ" data-en="Find bus travel">ಬಸ್ ಪ್ರಯಾಣ ಹುಡುಕಿ</small></button>
+  <button class="mode" data-mode="train"><span class="emoji">🚆</span><strong data-kn="ಟ್ರೈನ್" data-en="Train">ಟ್ರೈನ್</strong><small data-kn="ರೈಲು ಮಾಹಿತಿ ಮತ್ತು ಟಿಕೆಟ್" data-en="Train info and tickets">ರೈಲು ಮಾಹಿತಿ ಮತ್ತು ಟಿಕೆಟ್</small></button>
+  <button class="mode" data-mode="auto"><span class="emoji">🛺</span><strong data-kn="ಆಟೋ" data-en="Auto">ಆಟೋ</strong><small data-kn="ಸ್ಥಳೀಯ ಪ್ರಯಾಣ" data-en="Local ride">ಸ್ಥಳೀಯ ಪ್ರಯಾಣ</small></button>
+  <button class="mode" data-mode="taxi"><span class="emoji">🚕</span><strong data-kn="ಟ್ಯಾಕ್ಸಿ" data-en="Taxi">ಟ್ಯಾಕ್ಸಿ</strong><small data-kn="ತಕ್ಷಣ ಅಥವಾ ಮುಂಚಿತ" data-en="Now or scheduled">ತಕ್ಷಣ ಅಥವಾ ಮುಂಚಿತ</small></button>
+ </div>
+ <section class="card">
+  <h2 id="formTitle">ಬಸ್ ಪ್ರಯಾಣ ಹುಡುಕಿ</h2>
+  <form id="bookingForm">
+   <div class="field"><label id="fromLabel" for="from">ಎಲ್ಲಿಂದ? (ಆರಂಭದ ಸ್ಥಳ)</label><input id="from" required placeholder="ಉದಾ: ಮೈಸೂರು" autocomplete="street-address"></div>
+   <div class="field"><label id="toLabel" for="to">ಎಲ್ಲಿಗೆ? (ಗಮ್ಯಸ್ಥಾನ)</label><input id="to" required placeholder="ಉದಾ: ಬೆಂಗಳೂರು"></div>
+   <div class="field"><label id="dateLabel" for="date">ಪ್ರಯಾಣದ ದಿನಾಂಕ</label><input id="date" type="date" required></div>
+   <div class="field" id="timeField" hidden><label id="timeLabel" for="time">ಸಮಯ</label><input id="time" type="time"></div>
+   <div class="field" id="rideField" hidden><label id="rideLabel" for="ride">ಪ್ರಯಾಣದ ಆಯ್ಕೆ</label><select id="ride"><option value="now">ಈಗಲೇ</option><option value="schedule">ಮುಂಚಿತವಾಗಿ ಬುಕ್ ಮಾಡಿ</option></select></div>
+   <div class="field"><label id="peopleLabel" for="people">ಪ್ರಯಾಣಿಕರು</label><select id="people"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></div>
+   <button class="primary" id="submitBtn" type="submit">ಮುಂದುವರಿಸಿ</button>
+  </form>
+  <div class="result" id="result" aria-live="polite"></div>
+  <p class="help" id="formHelp">ನೀವು ನಮೂದಿಸುವ ವಿವರಗಳು ಈ ಡೆಮೊ ಪುಟದಲ್ಲೇ ಇರುತ್ತವೆ. ನಿಜವಾದ ಬುಕ್ಕಿಂಗ್ ಅಥವಾ ಪಾವತಿ ನಡೆಯುವುದಿಲ್ಲ.</p>
+ </section>
+ <section class="card">
+  <h2 id="officialTitle">ಅಧಿಕೃತ ಬುಕ್ಕಿಂಗ್ ಸೇವೆಗಳು</h2>
+  <p id="officialText" class="help" style="font-size:14px">ಟಿಕೆಟ್ ಖರೀದಿಸುವ ಮೊದಲು ವಿವರಗಳನ್ನು ಅಧಿಕೃತ ವೆಬ್‌ಸೈಟ್‌ನಲ್ಲಿ ಪರಿಶೀಲಿಸಿ.</p>
+  <div class="links">
+   <a class="link" href="https://www.irctc.co.in/" target="_blank" rel="noopener">IRCTC ರೈಲು ಟಿಕೆಟ್ ↗</a>
+   <a class="link" href="https://ksrtc.karnataka.gov.in/" target="_blank" rel="noopener" id="busLink">KSRTC ಮಾಹಿತಿ ↗</a>
+  </div>
+  <p class="help" id="operatorHelp">ನಿಮ್ಮ ನಗರ ತಿಳಿದ ನಂತರ ಸರಿಯಾದ ಸ್ಥಳೀಯ ಬಸ್ ಬುಕ್ಕಿಂಗ್ ಲಿಂಕ್ ಸೇರಿಸಬಹುದು.</p>
+ </section>
+ <footer id="footerText">107 ಡೆಮೊ • ಉಚಿತ ಆರಂಭಿಕ ಮಾದರಿ • ನೈಜ ಬುಕ್ಕಿಂಗ್‌ಗೆ ಮುಂದಿನ ಹಂತಗಳಲ್ಲಿ ಸೇವೆ ಸಂಪರ್ಕಿಸಬೇಕು</footer>
+</main>
+<script>
+const state={mode:"bus",lang:"kn"};
+const copy={
+ kn:{heroTitle:"ಪ್ರಯಾಣ ಮತ್ತು ಸ್ಥಳೀಯ ಸೇವೆಗಳು — ಒಂದೇ ಆ್ಯಪ್‌ನಲ್ಲಿ",heroSub:"ಬಸ್, ಟ್ರೈನ್, ಆಟೋ ಮತ್ತು ಟ್ಯಾಕ್ಸಿ ಆಯ್ಕೆಮಾಡಿ",notice:"ಇದು ಮೊದಲ ಡೆಮೊ ಆವೃತ್ತಿ. ಆಟೋ/ಟ್ಯಾಕ್ಸಿ ಬುಕ್ಕಿಂಗ್ ಇಲ್ಲಿ ಮಾದರಿಯಾಗಿ ರಚನೆಯಾಗುತ್ತದೆ; ನಿಜವಾದ ಚಾಲಕರಿಗೆ ಇನ್ನೂ ಕಳುಹಿಸುವುದಿಲ್ಲ. ಬಸ್/ಟ್ರೈನ್ ಟಿಕೆಟ್ ಖರೀದಿಗೆ ಅಧಿಕೃತ ಸೇವೆ ಬಳಸಿ.",from:"ಎಲ್ಲಿಂದ? (ಆರಂಭದ ಸ್ಥಳ)",to:"ಎಲ್ಲಿಗೆ? (ಗಮ್ಯಸ್ಥಾನ)",date:"ಪ್ರಯಾಣದ ದಿನಾಂಕ",time:"ಸಮಯ",ride:"ಪ್ರಯಾಣದ ಆಯ್ಕೆ",people:"ಪ್ರಯಾಣಿಕರು",submit:"ಮುಂದುವರಿಸಿ",help:"ನೀವು ನಮೂದಿಸುವ ವಿವರಗಳು ಈ ಡೆಮೊ ಪುಟದಲ್ಲೇ ಇರುತ್ತವೆ. ನಿಜವಾದ ಬುಕ್ಕಿಂಗ್ ಅಥವಾ ಪಾವತಿ ನಡೆಯುವುದಿಲ್ಲ.",officialTitle:"ಅಧಿಕೃತ ಬುಕ್ಕಿಂಗ್ ಸೇವೆಗಳು",officialText:"ಟಿಕೆಟ್ ಖರೀದಿಸುವ ಮೊದಲು ವಿವರಗಳನ್ನು ಅಧಿಕೃತ ವೆಬ್‌ಸೈಟ್‌ನಲ್ಲಿ ಪರಿಶೀಲಿಸಿ.",operatorHelp:"ನಿಮ್ಮ ನಗರ ತಿಳಿದ ನಂತರ ಸರಿಯಾದ ಸ್ಥಳೀಯ ಬಸ್ ಬುಕ್ಕಿಂಗ್ ಲಿಂಕ್ ಸೇರಿಸಬಹುದು.",footer:"107 ಡೆಮೊ • ಉಚಿತ ಆರಂಭಿಕ ಮಾದರಿ • ನೈಜ ಬುಕ್ಕಿಂಗ್‌ಗೆ ಮುಂದಿನ ಹಂತಗಳಲ್ಲಿ ಸೇವೆ ಸಂಪರ್ಕಿಸಬೇಕು",titles:{bus:"ಬಸ್ ಪ್ರಯಾಣ ಹುಡುಕಿ",train:"ಟ್ರೈನ್ ಪ್ರಯಾಣ ಹುಡುಕಿ",auto:"ಆಟೋ ಬುಕ್ ಮಾಡಿ",taxi:"ಟ್ಯಾಕ್ಸಿ ಬುಕ್ ಮಾಡಿ"},fromPlace:"ಉದಾ: ಮೈಸೂರು",toPlace:"ಉದಾ: ಬೆಂಗಳೂರು",now:"ಈಗಲೇ",schedule:"ಮುಂಚಿತವಾಗಿ ಬುಕ್ ಮಾಡಿ",peopleOne:"1",autoResult:"ಆಟೋ ಬುಕ್ಕಿಂಗ್ ವಿನಂತಿ ಸಿದ್ಧವಾಗಿದೆ",taxiResult:"ಟ್ಯಾಕ್ಸಿ ಬುಕ್ಕಿಂಗ್ ವಿನಂತಿ ಸಿದ್ಧವಾಗಿದೆ",busResult:"ಬಸ್ ಪ್ರಯಾಣ ವಿವರಗಳು ಸಿದ್ಧವಾಗಿವೆ",trainResult:"ಟ್ರೈನ್ ಪ್ರಯಾಣ ವಿವರಗಳು ಸಿದ್ಧವಾಗಿವೆ",details:"ವಿವರಗಳು",origin:"ಆರಂಭ",destination:"ಗಮ್ಯಸ್ಥಾನ",travelDate:"ದಿನಾಂಕ",passengers:"ಪ್ರಯಾಣಿಕರು",timeValue:"ಸಮಯ",notReal:"ಇದು ಡெமோ ಮಾತ್ರ — ಚಾಲಕ/ಆಪರೇಟರ್‌ಗೆ ಕಳುಹಿಸಲಾಗಿಲ್ಲ.",irctc:"IRCTC ಅಧಿಕೃತ ಟಿಕೆಟ್ ಸೈಟ್ ತೆರೆಯಿರಿ",busSearch:"ನಗರದ ಅಧಿಕೃತ ಬಸ್ ಸೇವೆ ನಂತರ ಸೇರಿಸಲಾಗುತ್ತದೆ."},
+ en:{heroTitle:"Travel and local services — in one app",heroSub:"Choose bus, train, auto or taxi",notice:"This is the first demo. Auto/taxi requests are created as a sample only and are not sent to real drivers. Use official services to purchase bus/train tickets.",from:"From (starting location)",to:"To (destination)",date:"Travel date",time:"Time",ride:"Ride option",people:"Passengers",submit:"Continue",help:"Your entries stay on this demo page. No real booking or payment happens.",officialTitle:"Official booking services",officialText:"Check trip details on an official website before purchasing tickets.",operatorHelp:"Once you share your city, we can add the correct local bus booking link.",footer:"107 demo • Free starter prototype • Real bookings need service integrations in later steps",titles:{bus:"Find a bus trip",train:"Find a train trip",auto:"Book an auto",taxi:"Book a taxi"},fromPlace:"e.g. Mysuru",toPlace:"e.g. Bengaluru",now:"Now",schedule:"Schedule for later",peopleOne:"1",autoResult:"Auto booking request prepared",taxiResult:"Taxi booking request prepared",busResult:"Bus trip details prepared",trainResult:"Train trip details prepared",details:"Details",origin:"From",destination:"To",travelDate:"Date",passengers:"Passengers",timeValue:"Time",notReal:"This is only a demo — it has not been sent to a driver/operator.",irctc:"Open official IRCTC ticket site",busSearch:"Local official bus service will be added after city selection."}
+};
+function t(){return copy[state.lang]}
+function renderLang(){
+ const c=t(); document.documentElement.lang=state.lang==="kn"?"kn":"en";
+ ["heroTitle","heroSub","notice","fromLabel","toLabel","dateLabel","timeLabel","rideLabel","peopleLabel","submitBtn","formHelp","officialTitle","officialText","operatorHelp","footerText"].forEach(id=>{const map={fromLabel:"from",toLabel:"to",dateLabel:"date",timeLabel:"time",rideLabel:"ride",peopleLabel:"people",submitBtn:"submit",formHelp:"help",footerText:"footer"};const el=document.getElementById(id); if(el) el.textContent=c[map[id]||id]});
+ document.getElementById("langBtn").textContent=state.lang==="kn"?"English":"ಕನ್ನಡ";
+ document.querySelectorAll("[data-kn]").forEach(el=>el.textContent=el.dataset[state.lang==="kn"?"kn":"en"]);
+ document.getElementById("from").placeholder=c.fromPlace;document.getElementById("to").placeholder=c.toPlace;
+ document.querySelector('#ride option[value="now"]').textContent=c.now;document.querySelector('#ride option[value="schedule"]').textContent=c.schedule;
+ document.getElementById("formTitle").textContent=c.titles[state.mode];
+}
+function setMode(mode){
+ state.mode=mode;document.querySelectorAll(".mode").forEach(b=>b.classList.toggle("active",b.dataset.mode===mode));
+ document.getElementById("formTitle").textContent=t().titles[mode];
+ const local=mode==="auto"||mode==="taxi";
+ document.getElementById("timeField").hidden=!local;
+ document.getElementById("rideField").hidden=!local;
+ document.getElementById("date").required=!local || document.getElementById("ride").value==="schedule";
+ document.getElementById("dateLabel").textContent=local&&document.getElementById("ride").value==="now"?(state.lang==="kn"?"ದಿನಾಂಕ (ಐಚ್ಛಿಕ)":"Date (optional)"):t().date;
+ document.getElementById("result").style.display="none";
+}
+document.querySelectorAll(".mode").forEach(b=>b.addEventListener("click",()=>setMode(b.dataset.mode)));
+document.getElementById("langBtn").addEventListener("click",()=>{state.lang=state.lang==="kn"?"en":"kn";renderLang();setMode(state.mode)});
+document.getElementById("ride").addEventListener("change",()=>setMode(state.mode));
+document.getElementById("bookingForm").addEventListener("submit",e=>{
+ e.preventDefault(); const c=t(),mode=state.mode;
+ const date=document.getElementById("date").value || (state.lang==="kn"?"ಇಂದು":"Today");
+ const time=document.getElementById("time").value || (state.lang==="kn"?"ನಿಗದಿಪಡಿಸಿಲ್ಲ":"Not specified");
+ const result=document.getElementById("result");
+ let title=mode==="auto"?c.autoResult:mode==="taxi"?c.taxiResult:mode==="bus"?c.busResult:c.trainResult;
+ let links="";
+ if(mode==="train") links='<div class="links"><a class="link" href="https://www.irctc.co.in/" target="_blank" rel="noopener">'+c.irctc+' ↗</a></div>';
+ if(mode==="bus") links='<p>'+c.busSearch+'</p><div class="links"><a class="link" href="https://ksrtc.karnataka.gov.in/" target="_blank" rel="noopener">KSRTC ↗</a></div>';
+ result.innerHTML='<strong>'+title+'</strong><div>'+c.origin+': '+escapeHtml(document.getElementById("from").value)+'</div><div>'+c.destination+': '+escapeHtml(document.getElementById("to").value)+'</div><div>'+c.travelDate+': '+escapeHtml(date)+'</div><div>'+c.passengers+': '+document.getElementById("people").value+'</div>'+(mode==="auto"||mode==="taxi"?'<div>'+c.timeValue+': '+escapeHtml(time)+'</div>':'')+'<p>'+c.notReal+'</p>'+links;
+ result.style.display="block";result.scrollIntoView({behavior:"smooth",block:"nearest"});
+});
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+const dateInput=document.getElementById("date");const today=new Date();dateInput.min=[today.getFullYear(),String(today.getMonth()+1).padStart(2,"0"),String(today.getDate()).padStart(2,"0")].join("-");
+renderLang();setMode("bus");
+</script>
+</body>
+</html>
